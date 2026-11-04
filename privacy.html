@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Как IVANJ Calendar использует данные Google Календаря, хранит подключение и позволяет отключить доступ.">
+  <title>Конфиденциальность — IVANJ Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <header class="site-header wrap">
+    <a class="brand" href="index.html">IVANJ Calendar</a>
+    <nav aria-label="Основная навигация"><a href="index.html">О приложении</a></nav>
+  </header>
+  <main id="main" class="wrap document">
+    <p class="eyebrow">Данные и доступ · редакция от 4 ноября 2026</p>
+    <h1>Политика конфиденциальности</h1>
+    <p class="lead">Эта страница описывает подключение Google Календаря в локальном личном приложении IVANJ Calendar. Она относится к календарному модулю, а не к отдельным функциям чата или голосового общения IVANJ.</p>
+    <section aria-labelledby="data-title">
+      <h2 id="data-title">1. Какие данные получает приложение</h2>
+      <ul>
+        <li><strong>Метаданные списка календарей.</strong> Google возвращает список доступных календарей. Приложение использует идентификаторы, названия и отметку основного календаря, чтобы показать список и сохранить ваш выбор.</li>
+        <li><strong>Интервалы занятости.</strong> Для выбранных календарей и указанного рабочего окна приложение получает время начала и окончания занятых промежутков через Google FreeBusy.</li>
+        <li><strong>Данные подключения.</strong> Приложение использует конфигурацию отдельного OAuth-клиента и токены, выданные Google после вашего согласия. Пароль Google в IVANJ не вводится.</li>
+      </ul>
+      <p>Запрашиваются два разрешения:</p>
+      <ul class="scopes"><li><code>calendar.calendarlist.readonly</code> — чтение списка календарей;</li><li><code>calendar.events.freebusy</code> — чтение занятости.</li></ul>
+      <p>Модуль не запрашивает содержание событий: их названия, описания и участников. Он не создаёт, не изменяет и не удаляет события, не отправляет приглашения.</p>
+    </section>
+    <section aria-labelledby="purpose-title">
+      <h2 id="purpose-title">2. Для чего используются данные</h2>
+      <p>Список календарей нужен для выбора источников занятости. Интервалы нужны для расчёта свободного времени и размещения выбранных вами задач в плане дня. Вычисления выполняются локально на компьютере, где запущен IVANJ.</p>
+      <p>Календарный модуль не передаёт полученные календарные данные модели ИИ, рекламным или аналитическим сервисам. Он не использует их для обучения моделей. При чтении занятости Google получает идентификаторы выбранных календарей и границы запрошенного временного окна.</p>
+    </section>
+    <section aria-labelledby="storage-title">
+      <h2 id="storage-title">3. Хранение и защита</h2>
+      <p>Конфигурация OAuth-клиента, токены подключения и идентификаторы выбранных календарей сохраняются локально под защитой Windows DPAPI для текущей учётной записи Windows. Эти данные позволяют восстанавливать подключение после перезапуска IVANJ.</p>
+      <p>Каталог календарей хранится в памяти работающего модуля. Полученные интервалы занятости и рассчитанный план обрабатываются в памяти и показываются в локальном интерфейсе; календарный модуль не сохраняет архив содержания встреч.</p>
+      <p>Локальные данные подключения сохраняются, пока вы не отключите подключение или не удалите его локальные данные. Защита Windows не заменяет контроль доступа к самому компьютеру и его учётной записи.</p>
+    </section>
+    <section aria-labelledby="disconnect-title">
+      <h2 id="disconnect-title">4. Как прекратить использование данных</h2>
+      <p>Чтобы построить отдельный план без календаря, выключите в IVANJ опцию «Учитывать встречи Google Календаря».</p>
+      <p>Кнопка «Отключить» в настройках календаря IVANJ удаляет локально сохранённые токены и выбор календарей. Конфигурация OAuth-клиента остаётся, чтобы подключение можно было настроить снова.</p>
+      <p>Локальное отключение не отзывает разрешение в Google Аккаунте. Для отзыва откройте настройки Google Аккаунта, найдите подключение IVANJ Calendar среди сторонних приложений и удалите его доступ. После отзыва новые запросы этого подключения к календарю потребуют нового согласия.</p>
+      <p>Отключение календаря не удаляет ваши события Google или задачи в IVANJ. Для удаления оставшейся локальной конфигурации обратитесь к владельцу установки.</p>
+    </section>
+    <section aria-labelledby="site-title">
+      <h2 id="site-title">5. Эта информационная страница</h2>
+      <p>В состав этих статических страниц не входят формы входа, скрипты аналитики, рекламные компоненты или внешние шрифты. Страницы не обращаются к вашему календарю.</p>
+      <p>При размещении страниц на GitHub Pages хостинг регистрирует и хранит IP-адрес посетителя в целях безопасности, даже если посетитель не вошёл в GitHub. Подробнее: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">сбор данных GitHub Pages</a> и <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">политика конфиденциальности GitHub</a>. Это обработка данных посещения сайта хостингом; локальное подключение IVANJ не передаёт ему календарь или токены Google.</p>
+    </section>
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">6. Контакт и изменения</h2>
+      <p>По вопросам доступа и удаления локальных данных обращайтесь к владельцу IVANJ по адресу поддержки, указанному на экране согласия Google. Актуальная дата этой редакции приведена в начале страницы.</p>
+      <p>При изменении способов обработки календарных данных описание должно быть обновлено до использования новых возможностей.</p>
+    </section>
+    <section class="english" lang="en" aria-labelledby="english-title">
+      <h2 id="english-title">English summary</h2>
+      <p>IVANJ Calendar reads calendar-list metadata and free/busy intervals for local day planning. It does not request event contents or modify events. Calendar data is not sent to AI models or used to train them. OAuth credentials, tokens and selected calendar IDs are stored locally using Windows DPAPI.</p>
+      <p>Disconnecting in IVANJ removes local tokens and calendar selection but retains the OAuth client configuration. To revoke the Google authorization, remove IVANJ Calendar access in your Google Account. For assistance, use the support contact shown on the Google consent screen.</p>
+      <p>When these pages are hosted on GitHub Pages, GitHub logs and stores visitors' IP addresses for security purposes. The local IVANJ integration does not send calendar data or Google tokens to the website host.</p>
+    </section>
+  </main>
+  <footer class="wrap site-footer"><span>IVANJ Calendar</span><a href="index.html">О приложении</a></footer>
+</body>
+</html>
