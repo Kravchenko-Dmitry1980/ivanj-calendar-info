@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IVANJ Calendar — подключение Google Календаря к локальному личному планировщику IVANJ.">
+  <title>IVANJ Calendar — планирование с учётом встреч</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <header class="site-header wrap">
+    <a class="brand" href="index.html">IVANJ Calendar</a>
+    <nav aria-label="Основная навигация"><a href="privacy.html">Конфиденциальность</a></nav>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="intro-title">
+      <p class="eyebrow">Личный помощник · локальное приложение</p>
+      <h1 id="intro-title">План дня, в котором есть место встречам</h1>
+      <p class="lead">IVANJ Calendar подключает Google Календарь к личному планировщику IVANJ на компьютере. Приложение проверяет занятость и размещает выбранные задачи в свободных промежутках.</p>
+      <a class="button" href="privacy.html">Как используются данные</a>
+    </section>
+    <section class="grid" aria-label="Возможности подключения">
+      <article class="card"><span class="number" aria-hidden="true">01</span><h2>Выбор календарей</h2><p>Выберите основной календарь или несколько доступных календарей, чтобы учитывать их общую занятость.</p></article>
+      <article class="card"><span class="number" aria-hidden="true">02</span><h2>Свободное время</h2><p>Задайте дату и рабочее окно. Планировщик получит интервалы занятости Google и рассчитает доступное время.</p></article>
+      <article class="card"><span class="number" aria-hidden="true">03</span><h2>План задач</h2><p>Локальный алгоритм учитывает приоритеты и длительность выбранных задач. Если времени не хватает, задача остаётся вне плана.</p></article>
+    </section>
+    <section class="panel" aria-labelledby="access-title">
+      <h2 id="access-title">Какой доступ используется</h2>
+      <p>Google предоставляет приложению доступ к списку календарей и интервалам занятости. Для выбора календаря IVANJ использует его название, идентификатор и отметку основного календаря.</p>
+      <p>Подключение работает только на чтение: оно не создаёт и не редактирует встречи, не отправляет приглашения и не запрашивает названия, описания или участников событий. Данные календаря обрабатываются локальным планировщиком и не передаются модели ИИ.</p>
+      <p>Вход и разрешение доступа выполняются в Google из установленного IVANJ. Эта информационная страница не принимает данные для входа и не предоставляет доступ к локальному приложению.</p>
+    </section>
+    <section class="text-section" aria-labelledby="control-title">
+      <h2 id="control-title">Подключение под вашим контролем</h2>
+      <p>Настройки подключения и токены сохраняются на вашем компьютере под защитой Windows DPAPI. В IVANJ можно выбрать календари, выключить учёт встреч или отключить локальное подключение. Отзыв разрешения у Google выполняется отдельно в настройках Google Аккаунта.</p>
+      <p>По вопросам работы приложения и обработки данных обращайтесь к владельцу IVANJ по адресу поддержки, указанному на экране согласия Google.</p>
+    </section>
+    <section class="english text-section" lang="en" aria-labelledby="english-title">
+      <h2 id="english-title">About IVANJ Calendar</h2>
+      <p>IVANJ Calendar is a Google Calendar integration for a personal desktop planner. It reads calendar-list metadata and free/busy intervals to schedule tasks locally. It does not read event contents, modify events, or send calendar data to an AI model. See the privacy notice for storage and disconnection details.</p>
+    </section>
+  </main>
+  <footer class="wrap site-footer"><span>IVANJ Calendar · 4 ноября 2026</span><a href="privacy.html">Политика конфиденциальности</a></footer>
+</body>
+</html>
