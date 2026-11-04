@@ -14,7 +14,7 @@
     <nav aria-label="Основная навигация"><a href="index.html">О приложении</a></nav>
   </header>
   <main id="main" class="wrap document">
-    <p class="eyebrow">Данные и доступ · редакция от 4 ноября 2026</p>
+    <p class="eyebrow">Данные и доступ · редакция от 4 ноября 2026 · сохранённый рабочий день</p>
     <h1>Политика конфиденциальности</h1>
     <p class="lead">Эта страница описывает подключение Google Календаря в локальном личном приложении IVANJ Calendar. Она относится к календарному модулю, а не к отдельным функциям чата или голосового общения IVANJ.</p>
     <section aria-labelledby="data-title">
@@ -36,7 +36,9 @@
     <section aria-labelledby="storage-title">
       <h2 id="storage-title">3. Хранение и защита</h2>
       <p>Конфигурация OAuth-клиента, токены подключения и идентификаторы выбранных календарей сохраняются локально под защитой Windows DPAPI для текущей учётной записи Windows. Эти данные позволяют восстанавливать подключение после перезапуска IVANJ.</p>
-      <p>Каталог календарей хранится в памяти работающего модуля. Полученные интервалы занятости и рассчитанный план обрабатываются в памяти и показываются в локальном интерфейсе; календарный модуль не сохраняет архив содержания встреч.</p>
+      <p>Каталог календарей и предварительный расчёт плана обрабатываются в памяти. После явного сохранения рабочего дня IVANJ записывает утверждённый план в локальный файл <code>20_JARVIS/workspace/workday/plans.json</code>: тексты задач, запланированное время начала и окончания, параметры рабочего окна и служебные сведения сохранения. Если план построен с календарём, вместе с ним сохраняются снимок занятых и свободных интервалов и время проверки Google. Этот снимок отражает момент расчёта, а не постоянно обновляемое расписание.</p>
+      <p>Файл сохранённых планов — обычный JSON без шифрования DPAPI. Он доступен тем, кто имеет доступ к соответствующим файлам на компьютере. Защита DPAPI, описанная выше, относится к данным подключения Google, а не к содержимому планов. Сохранённые планы и календарные интервалы не передаются модели ИИ или на публичный информационный сайт.</p>
+      <p>Сохранённый план остаётся в локальном файле до его замены для той же даты или удаления файла владельцем при остановленном IVANJ. Автоматическое удаление планов по сроку не выполняется. Приложение не запрашивает и не сохраняет содержание встреч Google.</p>
       <p>Локальные данные подключения сохраняются, пока вы не отключите подключение или не удалите его локальные данные. Защита Windows не заменяет контроль доступа к самому компьютеру и его учётной записи.</p>
     </section>
     <section aria-labelledby="disconnect-title">
@@ -44,7 +46,8 @@
       <p>Чтобы построить отдельный план без календаря, выключите в IVANJ опцию «Учитывать встречи Google Календаря».</p>
       <p>Кнопка «Отключить» в настройках календаря IVANJ удаляет локально сохранённые токены и выбор календарей. Конфигурация OAuth-клиента остаётся, чтобы подключение можно было настроить снова.</p>
       <p>Локальное отключение не отзывает разрешение в Google Аккаунте. Для отзыва откройте настройки Google Аккаунта, найдите подключение IVANJ Calendar среди сторонних приложений и удалите его доступ. После отзыва новые запросы этого подключения к календарю потребуют нового согласия.</p>
-      <p>Отключение календаря не удаляет ваши события Google или задачи в IVANJ. Для удаления оставшейся локальной конфигурации обратитесь к владельцу установки.</p>
+      <p>Отключение календаря и отзыв разрешения Google не удаляют ранее сохранённые планы или содержащиеся в них снимки занятости. Они также не удаляют ваши события Google или исходные задачи в IVANJ.</p>
+      <p>Кнопки удаления сохранённых планов в интерфейсе пока нет. Для удаления всех сохранённых рабочих дней владелец установки должен остановить IVANJ и удалить локальный файл <code>20_JARVIS/workspace/workday/plans.json</code>. Это удаляет сохранённые планы и их служебные квитанции, но не исходный список задач и не события Google. Для удаления оставшейся конфигурации подключения также обратитесь к владельцу установки.</p>
     </section>
     <section aria-labelledby="site-title">
       <h2 id="site-title">5. Эта информационная страница</h2>
@@ -59,7 +62,8 @@
     <section class="english" lang="en" aria-labelledby="english-title">
       <h2 id="english-title">English summary</h2>
       <p>IVANJ Calendar reads calendar-list metadata and free/busy intervals for local day planning. It does not request event contents or modify events. Calendar data is not sent to AI models or used to train them. OAuth credentials, tokens and selected calendar IDs are stored locally using Windows DPAPI.</p>
-      <p>Disconnecting in IVANJ removes local tokens and calendar selection but retains the OAuth client configuration. To revoke the Google authorization, remove IVANJ Calendar access in your Google Account. For assistance, use the support contact shown on the Google consent screen.</p>
+      <p>After an explicit save, the approved workday is stored locally in <code>20_JARVIS/workspace/workday/plans.json</code>. It includes task text, scheduled start and end times, planning parameters and save metadata. A calendar-backed plan also includes a snapshot of busy and free intervals and the Google check time. This file is plaintext JSON and is not protected by DPAPI; DPAPI protects the separate Google connection data. Saved plans and calendar snapshots are not sent to AI models or the public information website.</p>
+      <p>Disconnecting in IVANJ removes local tokens and calendar selection but retains the OAuth client configuration. Disconnecting or revoking Google access does not delete saved plans or their calendar snapshots. Plans remain until replaced for the same date or until the owner stops IVANJ and deletes <code>20_JARVIS/workspace/workday/plans.json</code>; there is no plan deletion button or automatic retention expiry. Deleting this file removes saved workdays and their receipts, not the original task list or Google events. To revoke the Google authorization, remove IVANJ Calendar access in your Google Account. For assistance, use the support contact shown on the Google consent screen.</p>
       <p>When these pages are hosted on GitHub Pages, GitHub logs and stores visitors' IP addresses for security purposes. The local IVANJ integration does not send calendar data or Google tokens to the website host.</p>
     </section>
   </main>
